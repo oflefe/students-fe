@@ -13,9 +13,23 @@ const initialState = {
     phone: ""
 }
 
-function NewStudentForm(props) {
+export interface studentInterface {
+    pk: number,
+    name: string,
+    email: string,
+    document: string,
+    phone: string
+}
 
-    const [state, setState] = useState(initialState)
+interface propInterface {
+    resetState: () => void,
+    student?: studentInterface,
+    toggle: () => void
+}
+
+function NewStudentForm(props:propInterface) {
+
+    const [state, setState] = useState<studentInterface>(initialState)
 
     useEffect(() => {
         if(props.student){
@@ -25,7 +39,7 @@ function NewStudentForm(props) {
         // eslint-disable-next-line
     },[])
 
-    const createStudent = (e) => {
+    const createStudent = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
         axios.post(API_URL, state)
             .then(() => {
@@ -34,7 +48,7 @@ function NewStudentForm(props) {
         }
             )
     }
-    const editStudent = (e) => {
+    const editStudent = (e: React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         axios.put(API_URL + state.pk, state)
             .then (() => {

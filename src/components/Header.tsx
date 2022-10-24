@@ -1,14 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 
 function Header() {
     return (
         <div className="text-center">
             <img
-                src="https://logrocket-assets.io/img/logo.png"
-                width="300"
+                src="/logo192.png"
+                width="192"
                 className="img-thumbnail"
                 style={{ marginTop: "20px" }}
-             alt={' alt text'}/>
+                alt={"alt text"}
+           />
             <hr />
             <h5>
                 <i>presents</i>

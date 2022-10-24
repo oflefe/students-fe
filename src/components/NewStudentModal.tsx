@@ -1,10 +1,15 @@
 import React, { Fragment, useState} from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import NewStudentForm from "./NewStudentForm";
+import NewStudentForm, {studentInterface} from "./NewStudentForm";
+
+interface propInterface{
+    create: boolean,
+    student?: studentInterface
+    resetState: () => void,
+}
 
 
-
-function NewStudentModal(props) {
+function NewStudentModal(props: propInterface) {
 
     const [state, setState] = useState({modal: false})
 
@@ -38,7 +43,7 @@ function NewStudentModal(props) {
                     <NewStudentForm
                         resetState={props.resetState}
                         toggle={toggle}
-                        student={props.student}
+                        student={props.student ? props.student : undefined}
                     />
                 </ModalBody>
             </Modal>

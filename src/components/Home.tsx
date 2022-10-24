@@ -1,12 +1,10 @@
-import React, { useEffect, useState} from "react";
+import  { useEffect, useState} from "react";
 import { Col, Container, Row } from "reactstrap";
-import StudentList from "./StudentList";
+import * as React from "react";
 import NewStudentModal from "./NewStudentModal";
-
 import axios from "axios";
-
-
 import {API_URL} from "../constants";
+import StudentList from "./StudentList";
 
 function Home() {
 
