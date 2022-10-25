@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import  {useEffect, useState} from 'react';
+import * as React from "react"
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-
 import axios from "axios";
-
 import { API_URL } from "../constants";
 
 const initialState = {

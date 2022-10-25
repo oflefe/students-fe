@@ -1,4 +1,5 @@
-import React, { Fragment, useState} from "react";
+import { Fragment, useState} from "react";
+import * as React from "react"
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import NewStudentForm, {studentInterface} from "./NewStudentForm";
 
@@ -38,7 +39,6 @@ function NewStudentModal(props: propInterface) {
             {button}
             <Modal isOpen={state.modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>{title}</ModalHeader>
-
                 <ModalBody>
                     <NewStudentForm
                         resetState={props.resetState}
