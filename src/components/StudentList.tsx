@@ -23,7 +23,7 @@ function StudentList(props: propInterface) {
                 <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody data-testid="tbody">
             {!students || students.length <= 0 ? (
                 <tr>
                     <td colSpan={6} align="center">
