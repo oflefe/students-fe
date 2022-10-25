@@ -37,10 +37,11 @@ function NewStudentModal(props: propInterface) {
     return (
         <Fragment>
             {button}
-            <Modal isOpen={state.modal} toggle={toggle}>
+            <Modal data-testid="modal" isOpen={state.modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>{title}</ModalHeader>
                 <ModalBody>
                     <NewStudentForm
+
                         resetState={props.resetState}
                         toggle={toggle}
                         student={props.student ? props.student : undefined}

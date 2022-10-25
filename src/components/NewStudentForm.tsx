@@ -59,7 +59,7 @@ function NewStudentForm(props:propInterface) {
 
 
     return (
-        <Form onSubmit={props.student ? editStudent : createStudent}>
+        <Form data-testid="new-student-form" onSubmit={props.student ? editStudent : createStudent}>
             <FormGroup>
                 <Label for="name">Name:</Label>
                 <Input

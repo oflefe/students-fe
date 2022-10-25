@@ -6,9 +6,12 @@ import "jest"
 
 describe('NewStudentModal', () => {
     it("new student button opens up new student form", () => {
-        const { getByText, getByRole } = render(<NewStudentModal resetState={() => {}} create={false}/>)
-        expect(getByRole("form")).not.toBeInTheDocument()
-
+        const { getByTestId, getByRole, queryByTestId } = render(<NewStudentModal resetState={() => {}} create={false}/>)
+        const button = getByRole("button")
+        expect(button).toBeInTheDocument()
+        expect(queryByTestId("form")).toBeNull()
+        fireEvent.click(button)
+        expect(getByTestId("new-student-form")).toBeInTheDocument()
     })
 });
 
