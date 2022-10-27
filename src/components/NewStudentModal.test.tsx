@@ -9,7 +9,7 @@ describe('NewStudentModal', () => {
         const { getByTestId, getByRole, queryByTestId } = render(<NewStudentModal resetState={() => {}} create={false}/>)
         const button = getByRole("button")
         expect(button).toBeInTheDocument()
-        expect(queryByTestId("form")).toBeNull()
+        expect(queryByTestId("new-student-form")).toBeNull()
         fireEvent.click(button)
         expect(getByTestId("new-student-form")).toBeInTheDocument()
     })
