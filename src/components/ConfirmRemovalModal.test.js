@@ -1,5 +1,5 @@
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
-import { fireEvent, render } from "@testing-library/react";
+import {  render } from "@testing-library/react";
 import "jest"
 import React from "react"
 import userEvent from "@testing-library/user-event";
@@ -13,7 +13,7 @@ describe("removal pop up", () => {
         return Promise.resolve({})
     })
     it("displays correct heading", () => {
-        const {queryByRole,getByText} = render(<ConfirmRemovalModal resetState={()=>{}} pk={1}/>)
+        const {queryByRole,getByText} = render(<ConfirmRemovalModal resetState={()=>{return "success"}} pk={1}/>)
         const removeButton = getByText("Remove")
         userEvent.click(removeButton)
         const heading = queryByRole("heading")

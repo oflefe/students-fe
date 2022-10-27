@@ -1,10 +1,5 @@
 import NewStudentForm from "./NewStudentForm";
-import {
-  cleanup,
-  fireEvent,
-  queryByTestId,
-  render,
-} from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
 import "jest";
@@ -22,7 +17,14 @@ describe("new student form", () => {
   });
   it("has all the correct editable form fields", () => {
     let { unmount, getAllByRole } = render(
-      <NewStudentForm resetState={() => {}} toggle={() => {}} />
+      <NewStudentForm
+        resetState={() => {
+          /**/
+        }}
+        toggle={() => {
+          /**/
+        }}
+      />
     );
     let inputs = getAllByRole("textbox");
     for (let i = 0; i < inputs.length; i++) {
@@ -42,7 +44,14 @@ describe("new student form", () => {
   it("closes after sending", () => {
     jest.mock("axios");
     let { queryByTestId, getByText, getAllByRole } = render(
-      <NewStudentForm resetState={() => {}} toggle={() => {}} />
+      <NewStudentForm
+        resetState={() => {
+          /**/
+        }}
+        toggle={() => {
+          /**/
+        }}
+      />
     );
     const form = queryByTestId("new-student-form");
     const button = getByText("Send");
@@ -74,11 +83,15 @@ describe("edit-student-form", () => {
       phone: "57589734937",
     };
     let valArray = Object.values(student);
-    let { queryAllByRole, queryByTestId } = render(
+    let { queryAllByRole } = render(
       <NewStudentForm
         student={student}
-        resetState={() => {}}
-        toggle={() => {}}
+        resetState={() => {
+          /**/
+        }}
+        toggle={() => {
+          /**/
+        }}
       />
     );
     let newInputs = queryAllByRole("textbox");
