@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["frontend-features-typescript", "master"]
+    branches: ["frontent-features-typescript", "master"]
   pull_request:
-    branches: ["master", "frontend-features-typescript"]
+    branches: ["master", "frontent-features-typescript"]
 
 jobs:
   build:
