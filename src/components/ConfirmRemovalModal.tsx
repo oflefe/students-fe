@@ -11,7 +11,6 @@ interface propInterface {
 }
 
 
-
 function ConfirmRemovalModal(props:propInterface) {
     interface modalState {
         modal: boolean,

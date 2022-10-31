@@ -28,31 +28,36 @@ interface propInterface {
 
 function NewStudentForm(props:propInterface) {
 
-    const [state, setState] = useState<studentInterface>(initialState)
+    const [student, setStudent] = useState<studentInterface>(initialState)
 
     useEffect(() => {
         if(props.student){
             const {pk, name, document, email, phone} = props.student
-            setState({pk, name, document, email, phone})
+            setStudent({pk, name, document, email, phone})
         }
         // eslint-disable-next-line
     },[])
 
     const createStudent = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
-        axios.post(API_URL, state)
+        axios.post(API_URL, student)
             .then(() => {
             props.resetState()
             props.toggle()
-        }
-            )
+        })
+        .catch((e) => {
+            alert(e)
+        })
     }
     const editStudent = (e: React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
-        axios.put(API_URL + state.pk, state)
+        axios.put(API_URL + student.pk, student)
             .then (() => {
                 props.resetState()
                 props.toggle()
+            })
+            .catch((e) => {
+                alert(e)
             })
     }
 
@@ -65,8 +70,8 @@ function NewStudentForm(props:propInterface) {
                 <Input
                     type="text"
                     name="name"
-                    onChange={(e) => state.name = e.target.value}
-                    defaultValue={state.name}
+                    onChange={(e) => student.name = e.target.value}
+                    defaultValue={student.name}
                 />
             </FormGroup>
             <FormGroup>
@@ -74,8 +79,8 @@ function NewStudentForm(props:propInterface) {
                 <Input
                     type="email"
                     name="email"
-                    onChange={(e) => state.email = e.target.value}
-                    defaultValue={state.email}
+                    onChange={(e) => student.email = e.target.value}
+                    defaultValue={student.email}
                 />
             </FormGroup>
             <FormGroup>
@@ -83,8 +88,8 @@ function NewStudentForm(props:propInterface) {
                 <Input
                     type="text"
                     name="document"
-                    onChange={(e) => state.document = e.target.value}
-                    defaultValue={state.document}
+                    onChange={(e) => student.document = e.target.value}
+                    defaultValue={student.document}
                 />
             </FormGroup>
             <FormGroup>
@@ -92,8 +97,8 @@ function NewStudentForm(props:propInterface) {
                 <Input
                     type="text"
                     name="phone"
-                    onChange={(e) => state.phone = e.target.value}
-                    defaultValue={state.phone}
+                    onChange={(e) => student.phone = e.target.value}
+                    defaultValue={student.phone}
                 />
             </FormGroup>
             <Button>Send</Button>

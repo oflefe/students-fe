@@ -1,5 +1,5 @@
 import NewStudentForm from "./NewStudentForm";
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
 import "jest";
@@ -15,8 +15,8 @@ describe("new student form", () => {
       return Promise.resolve({});
     }
   });
-  it("has all the correct editable form fields", () => {
-    let { unmount, getAllByRole } = render(
+  it("has all the correct editable form fields and closes after sending", () => {
+    let { getByText, getAllByRole, queryByTestId } = render(
       <NewStudentForm
         resetState={() => {
           /**/
@@ -39,7 +39,7 @@ describe("new student form", () => {
         expect(inputs[i]).toHaveValue("example");
       }
     }
-    unmount();
+
   });
   it("closes after sending", () => {
     jest.mock("axios");
@@ -61,7 +61,7 @@ describe("new student form", () => {
     userEvent.click(button);
     expect(form).toBeInTheDocument();
     expect(inputs[1]).toHaveValue("example@example.com");
-    userEvent.click(button);
+    fireEvent.click(button);
     let state = {
       pk: 0,
       name: "example",
